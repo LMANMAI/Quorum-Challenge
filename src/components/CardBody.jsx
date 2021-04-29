@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import Button from "./Button";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 const Cards = styled.div`
   /* height: 450px; */
   display: flex;
@@ -56,23 +56,38 @@ const ButtonContainer = styled.div`
   justify-content: center;
 `;
 const CardBlock = styled.div`
-  //border: 1px solid red;
+  /* border: 1px solid red; */
   width: fit-content;
   margin: 15px;
-  padding: 90px 0px 0px;
+  padding: 90px 50px 0px;
   &:first-child {
     padding-top: 0px;
     margin-top: 0px;
   }
-  &:last-child {
-    //border: 1px solid red;
-    ${ButtonContainer} {
-      display: none;
-    }
+`;
+const CardBot = styled.div`
+  height: 70px;
+  background: #fff;
+  margin-left: 1rem;
+
+  box-shadow: 0px 32px 64px rgba(17, 17, 17, 0.08);
+  border-radius: 32px;
+  width: 276px;
+  margin: 36px auto;
+  margin-top: 72px;
+  div {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  p {
+    font-weight: bold;
+  }
+  span {
+    margin-top: 10px;
   }
 `;
-
-const CardBody = ({ tittle, subtittle, number, array }) => {
+const CardBody = ({ tittle, subtittle, number, array, none, check, link }) => {
   return (
     <CardBlock id={`section${number}`}>
       <Header>
@@ -81,23 +96,57 @@ const CardBody = ({ tittle, subtittle, number, array }) => {
         </Tittle>
         <Subtittle>{subtittle}</Subtittle>
       </Header>
-
       <Cards>
         {React.Children.toArray(
           array.map((arr) => (
             <CardContainer>
               <Card arr={arr} />
               <InputContainer>
-                <Radio type="radio" name={tittle} id="" />
-                <RadioSpan></RadioSpan>
+                {check ? (
+                  <>
+                    <Radio type="checkbox" name={tittle} id="" />
+                    <RadioSpan></RadioSpan>
+                  </>
+                ) : (
+                  <>
+                    <Radio type="radio" name={tittle} id="" />
+                    <RadioSpan></RadioSpan>
+                  </>
+                )}
               </InputContainer>
             </CardContainer>
           ))
         )}
       </Cards>
-      <ButtonContainer>
-        <Button value="Next" />
-      </ButtonContainer>
+      {none && (
+        <>
+          <CardBot>
+            <div>
+              <p>None</p>
+              <span>$0</span>
+            </div>
+          </CardBot>
+          <InputContainer>
+            <Radio type="radio" name={tittle} id="" />
+            <RadioSpan></RadioSpan>
+          </InputContainer>
+        </>
+      )}
+      {link ? (
+        <>
+          <ButtonContainer>
+            <Link to="/detail">
+              <Button value="Go!" />
+            </Link>
+          </ButtonContainer>
+        </>
+      ) : (
+        <>
+          <ButtonContainer>
+            <Button value="Next" submit={true} />
+          </ButtonContainer>
+        </>
+      )}
     </CardBlock>
   );
 };

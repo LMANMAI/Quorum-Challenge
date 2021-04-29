@@ -2,7 +2,6 @@ import React from "react";
 import CardBody from "../../components/CardBody";
 import styled from "styled-components";
 import Progress from "../../components/Progress";
-// import Button from "../../components/Button";
 
 const Main = styled.main`
   display: flex;
@@ -14,6 +13,7 @@ const Container = styled.form`
   width: fit-content;
   margin-left: 25px;
   padding-left: 20px;
+  /* border: 1px solid red; */
 `;
 const ArrayBread = [
   { nombre: "italian bread", img: "/assets/images//pan1.png", precio: "$20" },
@@ -79,6 +79,7 @@ const HomePage = () => {
           subtittle="Select One"
           number="2"
           array={ArrayMeat}
+          none={true}
         />
         <CardBody
           tittle="cheese"
@@ -91,15 +92,18 @@ const HomePage = () => {
           subtittle="Select Multiple"
           number="4"
           array={ArrayVegetables}
+          check={true}
         />
         <CardBody
           tittle="Ingredients"
           subtittle="Select Multiple"
           number="5"
           array={ArrayIngredients}
+          check={true}
+          none={true}
+          link={true}
         />
       </Container>
-
       <Progress />
     </Main>
   );
