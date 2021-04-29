@@ -1,11 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Link, animateScroll as scroll } from "react-scroll";
 
-const ButtonContainer = styled.div`
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-`;
 const ButtonMain = styled.button`
   width: 200px;
   height: 64px;
@@ -17,10 +13,20 @@ const ButtonMain = styled.button`
   cursor: pointer;
 `;
 const Button = ({ value }) => {
+  // to={`section${contador}`}
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    console.log(count);
+  }, [count]);
   return (
-    <ButtonContainer>
-      <ButtonMain>{value}</ButtonMain>
-    </ButtonContainer>
+    <Link
+      to={`section${count}`}
+      smooth={true}
+      offset={105 + count}
+      duration={900}
+    >
+      <ButtonMain onClick={() => setCount(count + 1)}>{value}</ButtonMain>
+    </Link>
   );
 };
 

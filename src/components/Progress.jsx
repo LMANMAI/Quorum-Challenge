@@ -1,17 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+const Main = styled.div`
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const Container = styled.div`
   width: 276px;
   height: 400px;
-
-  position: fixed;
-  right: 100px;
-  top: 100px;
+  border-radius: 32px;
 `;
 const Sandwich = styled.div`
   height: 305px;
-
   background: linear-gradient(342.3deg, #ffffff 2.05%, #fff4e0 100.21%);
 `;
 const Total = styled.div`
@@ -22,10 +25,12 @@ const Total = styled.div`
 `;
 const Progress = () => {
   return (
-    <Container>
-      <Sandwich></Sandwich>
-      <Total></Total>
-    </Container>
+    <Main>
+      <Container>
+        <Sandwich></Sandwich>
+        <Total></Total>
+      </Container>
+    </Main>
   );
 };
 

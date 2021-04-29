@@ -18,17 +18,25 @@ const CartTop = styled.div`
   width: 100%;
   background: linear-gradient(342.3deg, #fcfcfc 2.05%, #f7f7fc 100.21%);
   // border: 1px solid red;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 `;
 const CardBot = styled.div`
   height: 70px;
   background: #fff;
 `;
-const Card = () => {
+const Card = ({ arr }) => {
   return (
     <>
       <CardContainer>
-        <CartTop></CartTop>
-        <CardBot></CardBot>
+        <CartTop>
+          <img src={arr.img} alt="" />
+        </CartTop>
+        <CardBot>
+          <p>{arr.nombre}</p>
+          <span>{arr.precio}</span>
+        </CardBot>
       </CardContainer>
     </>
   );

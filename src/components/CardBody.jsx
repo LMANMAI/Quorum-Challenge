@@ -3,15 +3,6 @@ import Card from "./Card";
 import Button from "./Button";
 import styled from "styled-components";
 
-const CardBlock = styled.div`
-  // border: 1px solid red;
-  width: 65%;
-  margin: 15px;
-  padding: 148px 0px;
-  &:first-child {
-    padding-top: 10px;
-  }
-`;
 const Cards = styled.div`
   /* height: 450px; */
   display: flex;
@@ -38,13 +29,18 @@ const CardContainer = styled.div`
   flex-direction: column;
 `;
 const InputContainer = styled.div`
-  //margin: 52px auto;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
   //border: 1px solid red;
 `;
 const Radio = styled.input`
-  opacity: 0;
-  position: absolute;
-  border: 1px solid red;
+  //opacity: 0;
+  //position: absolute;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  background: transparent;
 `;
 const RadioSpan = styled.span`
   background-color: #d9dbe9;
@@ -54,9 +50,31 @@ const RadioSpan = styled.span`
   position: absolute;
   border-radius: 100%;
 `;
-const CardBody = ({ tittle, subtittle, number, boton }) => {
+const ButtonContainer = styled.div`
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+`;
+const CardBlock = styled.div`
+  //border: 1px solid red;
+  width: fit-content;
+  margin: 15px;
+  padding: 90px 0px 0px;
+  &:first-child {
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+  &:last-child {
+    //border: 1px solid red;
+    ${ButtonContainer} {
+      display: none;
+    }
+  }
+`;
+
+const CardBody = ({ tittle, subtittle, number, array }) => {
   return (
-    <CardBlock>
+    <CardBlock id={`section${number}`}>
       <Header>
         <Tittle>
           {number}. {tittle}
@@ -65,29 +83,21 @@ const CardBody = ({ tittle, subtittle, number, boton }) => {
       </Header>
 
       <Cards>
-        <CardContainer>
-          <Card />
-          <InputContainer>
-            <Radio type="radio" name={tittle} id="" />
-            <RadioSpan></RadioSpan>
-          </InputContainer>
-        </CardContainer>
-        <CardContainer>
-          <Card />
-          <InputContainer>
-            <Radio type="radio" name={tittle} id="" />
-            <RadioSpan></RadioSpan>
-          </InputContainer>
-        </CardContainer>
-        <CardContainer>
-          <Card />
-          <InputContainer>
-            <Radio type="radio" name={tittle} id="" />
-            <RadioSpan></RadioSpan>
-          </InputContainer>
-        </CardContainer>
+        {React.Children.toArray(
+          array.map((arr) => (
+            <CardContainer>
+              <Card arr={arr} />
+              <InputContainer>
+                <Radio type="radio" name={tittle} id="" />
+                <RadioSpan></RadioSpan>
+              </InputContainer>
+            </CardContainer>
+          ))
+        )}
       </Cards>
-      <Button value={!boton ? "Next" : boton} />
+      <ButtonContainer>
+        <Button value="Next" />
+      </ButtonContainer>
     </CardBlock>
   );
 };
