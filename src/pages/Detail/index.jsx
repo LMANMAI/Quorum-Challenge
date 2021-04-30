@@ -54,6 +54,18 @@ const ButtonsContainer = styled.div`
   align-items: center;
   padding: 32px 0;
 `;
+const ButtonBack = styled.button`
+  width: 200px;
+  height: 64px;
+  border-radius: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 3px solid #5f2eea;
+  outline: none;
+  color: #5f2eea;
+  background-color: transparent;
+`;
 
 const DetailPage = () => {
   return (
@@ -83,8 +95,9 @@ const DetailPage = () => {
         </Table>
         <ButtonsContainer>
           <Button value="Give Me!" />
+
           <Link to="/">
-            <Button value="Do It again" dobutton={true} />
+            <ButtonBack>Do It again</ButtonBack>
           </Link>
         </ButtonsContainer>
       </Container>

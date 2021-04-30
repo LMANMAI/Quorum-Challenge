@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import SandwichContext from "../context/sandwichContext";
 
 const Main = styled.div`
   width: 100%;
@@ -13,6 +14,7 @@ const Container = styled.div`
   width: 276px;
   height: 400px;
   border-radius: 32px;
+  transform: ${(props) => (props.mov ? `translateY(${props.mov}px)` : "none")};
 `;
 const Sandwich = styled.div`
   height: 305px;
@@ -75,9 +77,12 @@ const PanInferior = styled.div`
   border-radius: 7.18449px 7.18449px 28.738px 28.738px;
 `;
 const Progress = () => {
+  const sandContext = useContext(SandwichContext);
+  const { mov, total } = sandContext;
+  console.log(`${mov}vh`);
   return (
     <Main>
-      <Container>
+      <Container mov={mov}>
         <Sandwich>
           <SandwichContent>
             <PanSuperior />
@@ -88,7 +93,7 @@ const Progress = () => {
           </SandwichContent>
         </Sandwich>
 
-        <Total>$00</Total>
+        <Total>${total}</Total>
       </Container>
     </Main>
   );

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import SandwichContext from "../context/sandwichContext";
 
 const CardContainer = styled.div`
   height: 450px;
@@ -36,6 +37,8 @@ const Precio = styled.span`
   margin-top: 10px;
 `;
 const Card = ({ arr }) => {
+  const sandContext = useContext(SandwichContext);
+  const { precio } = sandContext;
   return (
     <>
       <CardContainer>
@@ -50,7 +53,7 @@ const Card = ({ arr }) => {
         </CartTop>
         <CardBot>
           <Tittle>{arr.nombre}</Tittle>
-          <Precio>{arr.precio}</Precio>
+          <Precio>${precio}</Precio>
         </CardBot>
       </CardContainer>
     </>

@@ -31,7 +31,7 @@ const CardContainer = styled.div`
 const InputContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 30px 0;
+  margin: 10px 0;
   //border: 1px solid red;
 `;
 const Radio = styled.input`
@@ -87,6 +87,18 @@ const CardBot = styled.div`
     margin-top: 10px;
   }
 `;
+const ButtonFoward = styled.button`
+  width: 200px;
+  height: 64px;
+  border-radius: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: #5f2eea;
+  color: white;
+`;
 const CardBody = ({ tittle, subtittle, number, array, none, check, link }) => {
   return (
     <CardBlock id={`section${number}`}>
@@ -136,7 +148,7 @@ const CardBody = ({ tittle, subtittle, number, array, none, check, link }) => {
         <>
           <ButtonContainer>
             <Link to="/detail">
-              <Button value="Go!" />
+              <ButtonFoward>Go!</ButtonFoward>
             </Link>
           </ButtonContainer>
         </>

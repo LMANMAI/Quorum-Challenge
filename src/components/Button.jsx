@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-//import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
+import SandwichContext from "../context/sandwichContext";
 
 const ButtonMain = styled.button`
   width: 200px;
@@ -16,19 +17,24 @@ const ButtonMain = styled.button`
   text-transform: uppercase;
 `;
 const Button = ({ value, submit, dobutton }) => {
-  // to={`section${contador}`}
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
+  const sandContext = useContext(SandwichContext);
+  const { count, setCount } = sandContext;
   return (
-    <ButtonMain
-      type={submit ? "submit" : "button"}
-      onClick={() => setCount(count + 1)}
-      dobutton={dobutton}
+    <Link
+      to={`section${count}`}
+      spy={true}
+      smooth={true}
+      offset={80}
+      duration={500}
     >
-      {value}
-    </ButtonMain>
+      <ButtonMain
+        type={!submit ? "submit" : "button"}
+        onClick={() => setCount()}
+        dobutton={dobutton}
+      >
+        {value}
+      </ButtonMain>
+    </Link>
   );
 };
 

@@ -1,9 +1,11 @@
-import React from 'react';
-import Routes from './routes';
-
+import React from "react";
+import Routes from "./routes";
+import SandwichState from "./context/sandwichState";
 function App() {
   return (
-    <Routes />
+    <SandwichState>
+      <Routes />
+    </SandwichState>
   );
 }
 
