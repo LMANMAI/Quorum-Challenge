@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import SandwichContext from "../context/sandwichContext";
 
@@ -8,10 +8,7 @@ const CardContainer = styled.div`
   margin: 0 10px;
   border-radius: 32px;
   box-shadow: 0px 32px 54px rgba(17, 17, 17, 0.08);
-  //border: 1px solid red;
   overflow: hidden;
-  /* display: flex;
-  flex-direction: column; */
 `;
 const CartTop = styled.div`
   height: 343px;
@@ -36,9 +33,40 @@ const Tittle = styled.p`
 const Precio = styled.span`
   margin-top: 10px;
 `;
+const InputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+  // border: 1px solid red;
+  position: relative;
+`;
+const Radio = styled.input`
+  //opacity: 0;
+  position: absolute;
+  top: -3px;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  /* appearance: none;
+  visibility: hidden;
+  position: absolute; */
+`;
+const RadioSpan = styled.span`
+  background-color: #d9dbe9;
+  width: 32px;
+  height: 32px;
+  border: none;
+  ///position: absolute;
+  border-radius: 100%;
+`;
+
 const Card = ({ arr }) => {
+  const [radio, setRadio] = useState();
   const sandContext = useContext(SandwichContext);
-  const { precio } = sandContext;
+  const { precio, setPurchase, setTotal } = sandContext;
+
+  console.log(radio);
+  setPurchase(radio);
   return (
     <>
       <CardContainer>
@@ -56,6 +84,15 @@ const Card = ({ arr }) => {
           <Precio>${precio}</Precio>
         </CardBot>
       </CardContainer>
+      <InputContainer>
+        <Radio
+          type="radio"
+          name={arr.type}
+          value={arr.nombre}
+          onChange={(e) => setRadio(e.target.value)}
+        />
+        <RadioSpan></RadioSpan>
+      </InputContainer>
     </>
   );
 };

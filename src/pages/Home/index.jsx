@@ -16,53 +16,99 @@ const Container = styled.form`
   /* border: 1px solid red; */
 `;
 const ArrayBread = [
-  { nombre: "italian bread", img: "/assets/images//pan1.png", precio: "$20" },
-  { nombre: "Oregan + Cheese", img: "/assets/images/pan2.png", precio: "$20" },
-  { nombre: "Rye Bread", img: "/assets/images/pan3.png", precio: "$20" },
+  {
+    type: "bread",
+    nombre: "italian bread",
+    img: "/assets/images//pan1.png",
+    precio: "$20",
+  },
+  {
+    type: "bread",
+    nombre: "Oregan + Cheese",
+    img: "/assets/images/pan2.png",
+    precio: "$20",
+  },
+  {
+    type: "bread",
+    nombre: "Rye Bread",
+    img: "/assets/images/pan3.png",
+    precio: "$20",
+  },
 ];
 const ArrayMeat = [
-  { nombre: "italian bread", img: "/assets/images/carne1.png", precio: "$20" },
   {
-    nombre: "Oregan + Cheese",
+    type: "meat",
+    nombre: "italian bread",
+    img: "/assets/images/carne1.png",
+    precio: "$20",
+  },
+  {
+    type: "meat",
+    nombre: "Roast Beef",
     img: "/assets/images/carne2.png",
     precio: "$20",
   },
-  { nombre: "Rye Bread", img: "/assets/images/carne3.png", precio: "$20" },
+  {
+    type: "meat",
+    nombre: "Ham",
+    img: "/assets/images/carne3.png",
+    precio: "$20",
+  },
 ];
 const ArrayChesse = [
-  { nombre: "Danbo", img: "/assets/images/queso1.png", precio: "$20" },
   {
+    type: "chesse",
+    nombre: "Danbo",
+    img: "/assets/images/queso1.png",
+    precio: "$20",
+  },
+  {
+    type: "chesse",
     nombre: "Cheddar",
     img: "/assets/images/queso2.png",
     precio: "$20",
   },
-  { nombre: "none", img: "", precio: "$0" },
+  { type: "chesse", nombre: "none", img: "", precio: "$0" },
 ];
 const ArrayVegetables = [
   {
+    type: "vegetal",
     nombre: "Lettuce",
     img: "/assets/images/vegetal1.png",
     precio: "$20",
   },
   {
+    type: "vegetal",
     nombre: "Tomato",
     img: "/assets/images/vegetal2.png",
     precio: "$20",
   },
-  { nombre: "Onion", img: "/assets/images/vegetal3.png", precio: "$20" },
+  {
+    type: "vegetal",
+    nombre: "Onion",
+    img: "/assets/images/vegetal3.png",
+    precio: "$20",
+  },
 ];
 const ArrayIngredients = [
   {
+    type: "ingredient",
     nombre: "Mayo",
     img: "/assets/images/ingrediente1.png",
     precio: "$20",
   },
   {
+    type: "ingredient",
     nombre: "Mustard",
     img: "/assets/images/ingrediente2.png",
     precio: "$20",
   },
-  { nombre: "Ketchup", img: "/assets/images/ingrediente3.png", precio: "$20" },
+  {
+    type: "ingredient",
+    nombre: "Ketchup",
+    img: "/assets/images/ingrediente3.png",
+    precio: "$20",
+  },
 ];
 const HomePage = () => {
   return (

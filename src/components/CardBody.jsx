@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "./Card";
 import Button from "./Button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import SandwichContext from "../context/sandwichContext";
+
 const Cards = styled.div`
   /* height: 450px; */
   display: flex;
@@ -100,6 +102,8 @@ const ButtonFoward = styled.button`
   color: white;
 `;
 const CardBody = ({ tittle, subtittle, number, array, none, check, link }) => {
+  const sandContext = useContext(SandwichContext);
+  const { setTotal } = sandContext;
   return (
     <CardBlock id={`section${number}`}>
       <Header>
@@ -113,37 +117,10 @@ const CardBody = ({ tittle, subtittle, number, array, none, check, link }) => {
           array.map((arr) => (
             <CardContainer>
               <Card arr={arr} />
-              <InputContainer>
-                {check ? (
-                  <>
-                    <Radio type="checkbox" name={tittle} id="" />
-                    <RadioSpan></RadioSpan>
-                  </>
-                ) : (
-                  <>
-                    <Radio type="radio" name={tittle} id="" />
-                    <RadioSpan></RadioSpan>
-                  </>
-                )}
-              </InputContainer>
             </CardContainer>
           ))
         )}
       </Cards>
-      {none && (
-        <>
-          <CardBot>
-            <div>
-              <p>None</p>
-              <span>$0</span>
-            </div>
-          </CardBot>
-          <InputContainer>
-            <Radio type="radio" name={tittle} id="" />
-            <RadioSpan></RadioSpan>
-          </InputContainer>
-        </>
-      )}
       {link ? (
         <>
           <ButtonContainer>

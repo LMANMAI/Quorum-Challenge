@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import SandwichReducer from "./sandwichReducer";
 import SandwichContext from "./sandwichContext";
-import { SET_COUNT, SET_TOTAL } from "../types";
+import { SET_COUNT, SET_TOTAL, SET_PURCHASE } from "../types";
 const SanwichState = (props) => {
   const initialState = {
     count: 2,
@@ -9,6 +9,7 @@ const SanwichState = (props) => {
     total: 0,
     mov: 0,
     precio: 20,
+    sandwich: [],
   };
   const [state, dispatch] = useReducer(SandwichReducer, initialState);
 
@@ -21,6 +22,8 @@ const SanwichState = (props) => {
     if (state.count > 5) {
       state.count = 2;
     }
+    setPurchase();
+    setTotal();
     dispatch({
       type: SET_COUNT,
     });
@@ -32,6 +35,14 @@ const SanwichState = (props) => {
       payload: value,
     });
   };
+  const setPurchase = (ingrediente) => {
+    console.log(ingrediente);
+    //console.log(state.sandwich);
+    // dispatch({
+    //   type: SET_PURCHASE,
+    //   payload: ingrediente,
+    // });
+  };
   return (
     <SandwichContext.Provider
       value={{
@@ -40,8 +51,10 @@ const SanwichState = (props) => {
         total: state.total,
         mov: state.mov,
         precio: state.precio,
+        sandwich: state.sandwich,
         setCount,
         setTotal,
+        setPurchase,
       }}
     >
       {props.children}

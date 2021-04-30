@@ -79,7 +79,7 @@ const PanInferior = styled.div`
 const Progress = () => {
   const sandContext = useContext(SandwichContext);
   const { mov, total } = sandContext;
-  console.log(`${mov}vh`);
+  // console.log(`${mov}vh`);
   return (
     <Main>
       <Container mov={mov}>
