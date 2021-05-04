@@ -6,11 +6,13 @@ const Main = styled.div`
   width: 100%;
   max-height: 100vh;
   display: flex;
+
   align-items: center;
   justify-content: center;
-  margin-right: 120px;
 `;
 const Container = styled.div`
+  position: fixed;
+  right: 95px;
   width: 276px;
   height: 400px;
   border-radius: 32px;
@@ -78,11 +80,11 @@ const PanInferior = styled.div`
 `;
 const Progress = () => {
   const sandContext = useContext(SandwichContext);
-  const { mov, total } = sandContext;
+  const { total } = sandContext;
   // console.log(`${mov}vh`);
   return (
     <Main>
-      <Container mov={mov}>
+      <Container>
         <Sandwich>
           <SandwichContent>
             <PanSuperior />

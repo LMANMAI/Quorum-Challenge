@@ -1,21 +1,21 @@
-import { SET_COUNT, SET_TOTAL, SET_PURCHASE } from "../types";
+import { SET_COUNT, SET_TOTAL, RESTART } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
     case SET_COUNT:
       return {
         ...state,
-        //count: state.count + 1,
+        count: state.count + 1,
       };
     case SET_TOTAL:
       return {
         ...state,
-        // count: state.count + 1,
+         total: parseFloat(state.total) + parseFloat(action.payload),
       };
-    case SET_PURCHASE:
+    case RESTART:
       return {
-        // ...state,
-        // sandwich: [...state.sandwich, action.payload],
+        ...state,
+        total: 0,
       };
     default:
       return {

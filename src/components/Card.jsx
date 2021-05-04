@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import SandwichContext from "../context/sandwichContext";
 
@@ -61,12 +61,14 @@ const RadioSpan = styled.span`
 `;
 
 const Card = ({ arr }) => {
-  const [radio, setRadio] = useState();
+  const [radio, setRadio] = useState(0);
   const sandContext = useContext(SandwichContext);
-  const { precio, setPurchase, setTotal } = sandContext;
+  const { setTotal } = sandContext;
 
-  console.log(radio);
-  setPurchase(radio);
+  useEffect(() => {
+    setTotal(radio);
+  }, [radio]);
+
   return (
     <>
       <CardContainer>
@@ -81,14 +83,14 @@ const Card = ({ arr }) => {
         </CartTop>
         <CardBot>
           <Tittle>{arr.nombre}</Tittle>
-          <Precio>${precio}</Precio>
+          <Precio>$ {arr.precio}</Precio>
         </CardBot>
       </CardContainer>
       <InputContainer>
         <Radio
           type="radio"
           name={arr.type}
-          value={arr.nombre}
+          value={arr.precio}
           onChange={(e) => setRadio(e.target.value)}
         />
         <RadioSpan></RadioSpan>

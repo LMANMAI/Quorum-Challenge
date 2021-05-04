@@ -103,7 +103,7 @@ const ButtonFoward = styled.button`
 `;
 const CardBody = ({ tittle, subtittle, number, array, none, check, link }) => {
   const sandContext = useContext(SandwichContext);
-  const { setTotal } = sandContext;
+
   return (
     <CardBlock id={`section${number}`}>
       <Header>

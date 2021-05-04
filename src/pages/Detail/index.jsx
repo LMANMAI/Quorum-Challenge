@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import Progress from "../../components/Progress";
 import { Link } from "react-router-dom";
+import sandwichContext from "../../context/sandwichContext";
 
 const Main = styled.div`
   display: flex;
@@ -68,6 +69,8 @@ const ButtonBack = styled.button`
 `;
 
 const DetailPage = () => {
+  const sandContext = useContext(sandwichContext);
+  const { restart } = sandContext;
   return (
     <Main>
       <Container>
@@ -97,7 +100,7 @@ const DetailPage = () => {
           <Button value="Give Me!" />
 
           <Link to="/">
-            <ButtonBack>Do It again</ButtonBack>
+            <ButtonBack onClick={() => restart()}>Do It again</ButtonBack>
           </Link>
         </ButtonsContainer>
       </Container>
